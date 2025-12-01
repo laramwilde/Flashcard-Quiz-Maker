@@ -1,3 +1,6 @@
+flashcards = {"CPU": "Central Processing Unit", "GPU": "Graphics Processing Unit"}
+flashcards1 = {}
+
 def menu():
     choice = None
     print("############################")
@@ -48,7 +51,10 @@ def menu():
                 print("Please input a number between 1 and 4.")
 
 def view_flashcards():
-    print("Placeholder")
+    for term, definition in flashcards.items():
+        print(term, ":", definition)
+    if not flashcards1:
+        print("Empty!")
 
 def edit_flashcards():
     print("Placeholder")
