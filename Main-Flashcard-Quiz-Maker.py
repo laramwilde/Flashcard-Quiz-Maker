@@ -13,7 +13,7 @@ def menu():
     print("\nOption 2 will allow you to delete/edit flashcards.")
 
     while True:
-        choice = input("Please choose an option by using a number 1-4: ")
+        choice = input("Please choose an option by using a number 1-4: ")  
         try:
             choice = int(choice)
         except ValueError:
@@ -80,7 +80,7 @@ def edit_flashcards():
 
 
 def del_flashcards():
-    print("placeholder")
+    print("Place holder")
 
 def quiz_mode():
     print("Placeholder")
