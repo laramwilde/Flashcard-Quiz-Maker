@@ -1,5 +1,4 @@
 flashcards = {"CPU": "Central Processing Unit", "GPU": "Graphics Processing Unit"}
-flashcards1 = {}
 
 def menu():
     choice = None
@@ -51,13 +50,34 @@ def menu():
                 print("Please input a number between 1 and 4.")
 
 def view_flashcards():
-    for term, definition in flashcards.items():
-        print(term, ":", definition)
-    if not flashcards1:
-        print("Empty!")
+    if not flashcards:
+        print("Flashcards are empty!")
+    else:
+        for term, definition in flashcards.items():
+            print(term, ":", definition)
 
 def edit_flashcards():
-    print("Placeholder")
+    #makes a list of terms 
+    terms = list(flashcards.keys())
+    for i in range(len(terms)):
+        print(f"{i + 1}. {terms[i]}") # prints (Number. Term)
+
+    len_list = len(terms)
+    while True:
+        user_choice = input(f"Choose a number 1-{len_list}.")
+        try:
+            user_choice = int(user_choice)
+        except ValueError:
+            print("Please input a valid number.")
+        else:
+            if 1 <= user_choice >= len_list:
+                selected_index = user_choice - 1
+                selected_term = terms[selected_index]
+                break
+    new_definition = input(f"Please enter the new definition for {selected_term}:")
+    flashcards[selected_term] = new_definition
+    print(f"The updated flashcard is now: \n{selected_term} : {flashcards[selected_term]}")
+
 
 def del_flashcards():
     print("placeholder")
