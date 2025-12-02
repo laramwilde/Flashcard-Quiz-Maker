@@ -219,9 +219,14 @@ def quiz_mode():
 
 
 def view_scores():
-    with open("scores.txt", "r") as file:
-        for line in file:
-            print(line)
+    try:
+        with open("scores.txt", "r") as file:
+            for line in file:
+                print(line)
+    except FileNotFoundError:
+        print("\nNo scores have been saved yet.")
+        print("Please save scores in quiz mode before selecting view scores.")
+        print("Returning to main menu.\n")
 
 def add_flashcard():
     while True:
