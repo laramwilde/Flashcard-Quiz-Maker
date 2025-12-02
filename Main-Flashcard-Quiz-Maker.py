@@ -127,7 +127,51 @@ def del_flashcards():
 
 
 def quiz_mode():
-    print("Placeholder")
+    print("\n")
+    print("=======================")
+    print("       QUIZ MODE       ")
+    print("=======================")
+    print("\nPlease select from the following two options:")
+    print("1.Program tests if the answer is correct.")
+    print("     WARNING (CHOOSING OPTION 1 MEANS THAT YOUR ANSWER HAS TO BE EXACTLY CORRECT, LETTER FOR LETTER.)")
+    print("        DO NOT CHOOSE THIS OPTION IF YOU WANT SCORES TO BE 100% ACCURATE OR YOU DO NOT KNOW THE EXACT ANSWERS.")
+    print("2.You input if the answer was correct.")
+    while True:
+        choice = input("Please choose option 1 or 2:")
+        try:
+            choice = int(choice)
+        except ValueError:
+            print("Please input a valid number.")
+        else:
+            if choice == 1 or choice == 2:
+                if choice == 1:
+                    print("Reminder - Answers have to be correct letter for letter to be counted as correct.")
+                    #makes a list of terms
+                    score = 0
+                    #terms = list(flashcards.keys())
+                    #definitions = list(flashcards.values())
+                    #len_terms = len(terms)
+                    #len_definitions = len(definitions)
+                    for term,definition in flashcards.items():
+                            clean_correct_answer = definition.lower()
+                            print(term)
+                            user_answer = input("Input answer:")
+                            user_answer = user_answer.strip().lower()
+                            clean_correct_answer = clean_correct_answer.strip().lower()
+                            if user_answer == clean_correct_answer:
+                                print("Correct!")
+                                score += 1
+                            else:
+                                print("Incorrect!")
+                                print(f"The correct answer was: \n {definition}")
+                    print("\nYou have completed the flashcards quiz.")
+                    print(f"Your score was: {score} / {len(flashcards)}")
+                    #soon to add a text file for scores once other features are complete
+                elif choice == 2:
+                    print("")
+            else:
+                print("Please input 1 or 2!")
+
 
 def view_scores():
     print("Placeholder")
