@@ -86,6 +86,9 @@ def view_flashcards():
         print("\n")
 
 def edit_flashcards():
+    if not flashcards:
+        print("\nTHERE ARE CURRENTLY NO FLASHCARDS. PLEASE ADD FLASHCARDS BEFORE SELECTING THIS OPTION.")
+        return
     #makes a list of terms 
     terms = list(flashcards.keys())
     for i in range(len(terms)):
@@ -109,6 +112,9 @@ def edit_flashcards():
 
 
 def del_flashcards():
+    if not flashcards:
+        print("\nTHERE ARE CURRENTLY NO FLASHCARDS. PLEASE ADD FLASHCARDS BEFORE SELECTING THIS OPTION.")
+        return
     #prints each flashcard with a number
     terms = list(flashcards.keys())
     for i in range(len(terms)):
