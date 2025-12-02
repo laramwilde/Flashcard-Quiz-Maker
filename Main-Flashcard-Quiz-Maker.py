@@ -1,6 +1,6 @@
 from datetime import datetime
 
-flashcards = {"CPU": "Central Processing Unit", "GPU": "Graphics Processing Unit"}
+flashcards = {}
 
 '''
 As the flashcards dictionary will be empty when the program first starts - it needs to add what is in the file into the dictionary.
@@ -238,6 +238,7 @@ def add_flashcard():
     print(f"{new_flashcard_term} : {new_flascard_definition}")
 
 while True:
+    load_flashcards()
     choice = menu()
 
     # QUIZ MODE
