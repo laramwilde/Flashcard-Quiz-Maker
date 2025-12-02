@@ -33,19 +33,20 @@ def menu():
     print("############################")
     print("1.Quiz Mode")
     print("2.View Flashcards")
+    print("3.Add Flashcards")
     # viewing flashcards will allow user to delete/edit them
-    print("3.View Scores")
-    print("4.Quit")
+    print("4.View Scores")
+    print("5.Quit")
     print("\nOption 2 will allow you to delete/edit flashcards.\n")
 
     while True:
-        choice = input("Please choose an option by using a number 1-4: ")  
+        choice = input("Please choose an option by using a number 1-5: ")  
         try:
             choice = int(choice)
         except ValueError:
-            print("Please input a valid number, 1-4.")
+            print("Please input a valid number, 1-5.")
         else:
-            if 1 <= choice <= 4:
+            if 1 <= choice <= 5:
                 if choice == 2:
                     print("\n###################################")
                     print("           View Flashcards           ")
@@ -73,7 +74,7 @@ def menu():
                                 return choice
                 return choice
             else:
-                print("Please input a number between 1 and 4: ")
+                print("Please input a number between 1 and 5: ")
 
 def view_flashcards():
     if not flashcards:
@@ -215,6 +216,27 @@ def view_scores():
         for line in file:
             print(line)
 
+def add_flashcard():
+    while True:
+        new_flashcard_term = input("Input the term:")
+        if new_flashcard_term == "":
+            print("Term cannot be empty.")
+        elif new_flashcard_term.isspace():
+            print("Term cannot be empty!")
+        else:
+            break
+    while True:
+        new_flascard_definition = input("Input the definition: ")
+        if new_flascard_definition == "":
+            print("Definition cannot be empty!")
+        elif new_flascard_definition.isspace():
+            print("Definition cannot be empty!")
+        else:
+            break
+    flashcards[new_flashcard_term] = new_flascard_definition
+    print("You have now added the following flashcard:")
+    print(f"{new_flashcard_term} : {new_flascard_definition}")
+
 while True:
     choice = menu()
 
@@ -238,11 +260,16 @@ while True:
         del_flashcards()
         save_flashcards
     
-    #VIEW SCORES
+    #ADD FLASHCARDS
     elif choice == 3:
+        add_flashcard()
+        save_flashcards()
+
+    #VIEW SCORE
+    elif choice == 4:
         view_scores()
 
     #QUIT
-    elif choice == 4:
+    elif choice == 5:
         break
     
