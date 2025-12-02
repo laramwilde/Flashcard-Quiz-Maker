@@ -217,23 +217,32 @@ def view_scores():
 
 while True:
     choice = menu()
+
+    # QUIZ MODE
     if choice == 1:
         quiz_mode()
 
+    #VIEW FLASHCARDS
     elif choice == "2a":
         view_flashcards()
 
+    #EDIT FLASHCARDS
     elif choice == "2b":
         view_flashcards() #this function needs to be called as edit flashcards only displays the terms, not definitions 
         edit_flashcards()
+        save_flashcards()
     
+    #DELETE FLASHCARDS
     elif choice == "2c":
         view_flashcards()
         del_flashcards()
+        save_flashcards
     
+    #VIEW SCORES
     elif choice == 3:
         view_scores()
 
+    #QUIT
     elif choice == 4:
         break
     
