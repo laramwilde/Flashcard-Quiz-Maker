@@ -7,7 +7,9 @@ The save flashcard function will overwrite what was in the file incase anything 
 '''
 
 def save_flashcards():
-    print("Placeholder")
+        with open("flashcards.txt", "w") as file:
+            for term, definition in flashcards.items():
+                file.write(f"{term}|{definition}\n")
 
 
 def load_flashcards():
