@@ -4,8 +4,6 @@ Program that allows the user to create flashcard and quiz themselves on it. Incl
 ## Features
 - Load flashcards from a file
 - Save flashcards to a file
-- Difficulty modes
-    - Easy/Medium/Hard
 - Add new flashcards
     - Includes term and definition
 - List all flashcards
