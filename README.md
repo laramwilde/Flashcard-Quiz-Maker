@@ -14,5 +14,5 @@ Program that allows the user to create flashcard and quiz themselves on it. Incl
 - Quit program feature
 
 ## Why I made this
-I'm currently doing a T-Level in college in Digital Production, I thought it would be useful to make a mini flashcard program I could use. (Although I probably wont.) This project  will help me work on file handling.
+I'm currently doing a T-Level in college in Digital Production, I thought it would be useful to make a mini flashcard program I could use. (Although I probably wont.) This project  will help me work on file handling & dictionaries.
 
