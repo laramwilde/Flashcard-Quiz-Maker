@@ -1,12 +1,26 @@
 flashcards = {"CPU": "Central Processing Unit", "GPU": "Graphics Processing Unit"}
 
+
+'''
+As the flashcards dictionary will be empty when the program first starts - it needs to add what is in the file into the dictionary.
+The save flashcard function will overwrite what was in the file incase anything has been deleted or edited.
+'''
+
 def save_flashcards():
     print("Placeholder")
 
-def load_flashcards():
-    print("placeholder")
 
-    
+def load_flashcards():
+    try:          #the file name ,  read    , handle
+        with open("flashcards.txt", "r") as file:
+            for line in file:
+                line = line.strip()
+                term, definition = line.split("|", 1)
+                flashcards[term] = definition
+    except FileNotFoundError:
+        pass   # does nothing , the save flashcards will create the file if there is not one
+
+
 def menu():
     choice = None
     print("############################")
