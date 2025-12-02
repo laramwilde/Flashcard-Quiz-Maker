@@ -1,3 +1,5 @@
+
+
 flashcards = {"CPU": "Central Processing Unit", "GPU": "Graphics Processing Unit"}
 
 
@@ -134,8 +136,8 @@ def quiz_mode():
     print("\nPlease select from the following two options:")
     print("1.Program tests if the answer is correct.")
     print("     WARNING (CHOOSING OPTION 1 MEANS THAT YOUR ANSWER HAS TO BE EXACTLY CORRECT, LETTER FOR LETTER.)")
-    print("        DO NOT CHOOSE THIS OPTION IF YOU WANT SCORES TO BE 100% ACCURATE OR YOU DO NOT KNOW THE EXACT ANSWERS.")
-    print("2.You input if the answer was correct.")
+    print("        DO NOT CHOOSE THIS OPTION IF YOU WANT SCORES TO BE 100% ACCURATE OR YOU DO NOT KNOW THE EXACT ANSWERS.\n")
+    print("2.User inputs if the answer was correct.")
     while True:
         choice = input("Please choose option 1 or 2:")
         try:
@@ -148,10 +150,6 @@ def quiz_mode():
                     print("Reminder - Answers have to be correct letter for letter to be counted as correct.")
                     #makes a list of terms
                     score = 0
-                    #terms = list(flashcards.keys())
-                    #definitions = list(flashcards.values())
-                    #len_terms = len(terms)
-                    #len_definitions = len(definitions)
                     for term,definition in flashcards.items():
                             clean_correct_answer = definition.lower()
                             print(term)
@@ -166,9 +164,26 @@ def quiz_mode():
                                 print(f"The correct answer was: \n {definition}")
                     print("\nYou have completed the flashcards quiz.")
                     print(f"Your score was: {score} / {len(flashcards)}")
+                    return
                     #soon to add a text file for scores once other features are complete
                 elif choice == 2:
-                    print("")
+                    score = 0
+                    print("======================================================")
+                    print("You have selected option 2.")
+                    print("In this mode, input Y if you got it correct, N if not.")
+                    print("======================================================\n")
+                    for term,definition in flashcards.items():
+                        print("========================")
+                        print(term)
+                        print("========================")
+                        user_answer = input("Input an answer:\n")
+                        print(f"\nYour answer was: {user_answer}\nThe correct answer is: {definition}\n")
+                        correct = input("Is this correct? Y/N")
+                        if correct.lower() == "y":
+                            score += 1
+                    print("\nYou have completed the flashcards quiz.")
+                    print(f"Your score was {score} / {len(flashcards)}")
+                    return
             else:
                 print("Please input 1 or 2!")
 
