@@ -1,12 +1,14 @@
-
+from datetime import datetime
 
 flashcards = {"CPU": "Central Processing Unit", "GPU": "Graphics Processing Unit"}
-
 
 '''
 As the flashcards dictionary will be empty when the program first starts - it needs to add what is in the file into the dictionary.
 The save flashcard function will overwrite what was in the file incase anything has been deleted or edited.
 '''
+def save_score(timestamp,score):
+    with open("scores.txt", "a") as file:
+        file.write(f"{timestamp} | {score}/{len(flashcards)}\n")
 
 def save_flashcards():
         with open("flashcards.txt", "w") as file:
@@ -23,7 +25,6 @@ def load_flashcards():
                 flashcards[term] = definition
     except FileNotFoundError:
         pass   # does nothing , the save flashcards will create the file if there is not one
-
 
 def menu():
     choice = None
@@ -164,6 +165,18 @@ def quiz_mode():
                                 print(f"The correct answer was: \n {definition}")
                     print("\nYou have completed the flashcards quiz.")
                     print(f"Your score was: {score} / {len(flashcards)}")
+                    while True:
+                        user_choice = input("Would you like to save your score? Y/N")
+                        if user_choice.lower() == "y":
+                            timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+                            save_score(timestamp,score)
+                            print("Score has been saved.")
+                            break
+                        elif user_choice.lower() == "n":
+                            print("Score has not been saved.")
+                            break
+                        else:
+                            print("Please enter Y/N.")
                     return
                     #soon to add a text file for scores once other features are complete
                 elif choice == 2:
@@ -183,13 +196,24 @@ def quiz_mode():
                             score += 1
                     print("\nYou have completed the flashcards quiz.")
                     print(f"Your score was {score} / {len(flashcards)}")
+                    user_choice = input("Would you like to save your score? Y/N")
+                    if user_choice.lower() == "y":
+                        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
+                        save_score(timestamp,score)
+                        print("Score has been saved.")
+                        break
+                    elif user_choice.lower() == "n":
+                        print("Score has not been saved.")
+                        break
                     return
             else:
                 print("Please input 1 or 2!")
 
 
 def view_scores():
-    print("Placeholder")
+    with open("scores.txt", "r") as file:
+        for line in file:
+            print(line)
 
 while True:
     choice = menu()
