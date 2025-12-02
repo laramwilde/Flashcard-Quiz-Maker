@@ -28,9 +28,9 @@ def load_flashcards():
 
 def menu():
     choice = None
-    print("############################")
+    print("============================")
     print("    A FLASHCARD PROGRAM     ")
-    print("############################")
+    print("============================")
     print("1.Quiz Mode")
     print("2.View Flashcards")
     print("3.Add Flashcards")
@@ -48,9 +48,9 @@ def menu():
         else:
             if 1 <= choice <= 5:
                 if choice == 2:
-                    print("\n###################################")
+                    print("\n===================================")
                     print("           View Flashcards           ")
-                    print("###################################")
+                    print("===================================")
                     print("1.View Flashcards") # 2a
                     print("2.View Flashcards & edit one.") # 2b
                     print("3.View Flashcards & delete") #2c
@@ -131,6 +131,12 @@ def del_flashcards():
 
 
 def quiz_mode():
+    if not flashcards:
+        print("================")
+        print("     WARNING    ")
+        print("================")
+        print("\nFlashcards are empty - please add some flashcards before selecting quiz mode.\n")
+        return
     print("\n")
     print("=======================")
     print("       QUIZ MODE       ")
@@ -154,7 +160,9 @@ def quiz_mode():
                     score = 0
                     for term,definition in flashcards.items():
                             clean_correct_answer = definition.lower()
+                            print("==================================")
                             print(term)
+                            print("==================================")
                             user_answer = input("Input answer:")
                             user_answer = user_answer.strip().lower()
                             clean_correct_answer = clean_correct_answer.strip().lower()
@@ -179,7 +187,6 @@ def quiz_mode():
                         else:
                             print("Please enter Y/N.")
                     return
-                    #soon to add a text file for scores once other features are complete
                 elif choice == 2:
                     score = 0
                     print("======================================================")
