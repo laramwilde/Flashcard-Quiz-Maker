@@ -1,5 +1,12 @@
 flashcards = {"CPU": "Central Processing Unit", "GPU": "Graphics Processing Unit"}
 
+def save_flashcards():
+    print("Placeholder")
+
+def load_flashcards():
+    print("placeholder")
+
+    
 def menu():
     choice = None
     print("############################")
@@ -72,7 +79,7 @@ def edit_flashcards():
         except ValueError:
             print("Please input a valid number.")
         else:
-            if 1 <= user_choice >= len_list:
+            if 1 <= user_choice <= len_list:
                 selected_index = user_choice - 1
                 selected_term = terms[selected_index]
                 break
@@ -95,7 +102,7 @@ def del_flashcards():
         except ValueError:
             print("Please input a valid number.")
         else:
-            if 1 <= user_choice >= len_list:
+            if 1 <= user_choice <= len_list:
                 selected_index = user_choice - 1
                 selected_term = terms[selected_index]
                 del flashcards[selected_term]
